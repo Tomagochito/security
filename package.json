@@ -19,7 +19,6 @@
     "sequelize": "^6.37.3"
   },
   "main": "app.js",
-  "devDependencies": {},
   "author": "",
   "license": "ISC",
   "description": ""
