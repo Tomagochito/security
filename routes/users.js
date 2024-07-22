@@ -4,10 +4,10 @@ let crypto = require('crypto');
 var express = require('express');
 var router = express.Router();
 
- /* 1. Cargue los modelos de acuerdo con la configuración de la conexión */
- const sequelize = require('../models/index.js').sequelize;
- var initModels = require("../models/init-models");
- var models = initModels( sequelize );  
+      /* 1. Instanciación del modelo */
+      const sequelize = require('../models/index.js').sequelize;
+      var initModels = require("../models/init-models");
+      var models = initModels( sequelize );
 
 /* GET users listing. 
 router.get('/', function(req, res, next) {
@@ -20,20 +20,18 @@ router.get('/', function(req, res, next) {
    
 });*/
 
-
-
 /* GET users listing. */
- /* 2. Convierta el callback en asíncrono */
- router.get('/', async function(req, res, next) {
+     /* 2. Convierta el callback en asíncrono */
+     router.get('/', async function(req, res, next) {
           
-       /* 3. Uso del método findAll */
-       let usersCollection = await models.users.findAll({ })
-       let rolesCollection = await models.roles.findAll({ })
+      /* 3. Uso del método findAll */
+      let usersCollection = await models.users.findAll({ })
+      let rolesCollection = await models.roles.findAll({ })
 
-       /* 4. Paso de parámetros a la vista */
-       res.render('crud', { title: 'CRUD of users', usersArray: usersCollection, rolesArray: rolesCollection   });
+      /* 4. Paso de parámetros a la vista */
+      res.render('crud', { title: 'CRUD of users', usersArray: usersCollection, rolesArray: rolesCollection   });
 
-     });
+    });
 
 
 /* POST user. */
@@ -50,8 +48,11 @@ router.get('/', function(req, res, next) {
     let hash = crypto.createHmac('sha512', salt).update(password).digest("base64");
     let passwordHash = salt + "$" + hash
 
- /* 5.1. Utilice el model.user_roles para crear la relación ( user.iduser , idrole) */
- await models.users_roles.create({ users_iduser: user.iduser, roles_idrole: idrole })
+     /* 5. Guarde el registro mediante el método create */
+     let user = await models.users.create({ name: name, password: passwordHash })
+
+    /* 5.1. Utilice el model.user_roles para crear la relación ( user.iduser , idrole) */
+    await models.users_roles.create({ users_iduser: user.iduser, roles_idrole: idrole })
 
 
     /* 6. Redireccione a la ruta con la vista principal '/users' */
