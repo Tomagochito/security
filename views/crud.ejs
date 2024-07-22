@@ -32,6 +32,8 @@
         <div class="container-xl">
         <!-- 1. Navbar -->
         <%- include('partials/navbar.ejs') %>
+
+
             <div class="table-responsive">
                 <div class="table-wrapper">
                     <div class="table-title">
@@ -130,9 +132,10 @@
         </div>
         <!-- Edit Modal HTML -->
         <div id="addEmployeeModal" class="modal fade">
+           
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                        <form method="post" action="/users">
                         <div class="modal-header">
                             <h4 class="modal-title">Add User</h4>
                             <button type="button" class="close"
