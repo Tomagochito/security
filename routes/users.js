@@ -25,14 +25,15 @@ router.get('/', function(req, res, next) {
 /* GET users listing. */
  /* 2. Convierta el callback en asíncrono */
  router.get('/', async function(req, res, next) {
+          
+       /* 3. Uso del método findAll */
+       let usersCollection = await models.users.findAll({ })
+       let rolesCollection = await models.roles.findAll({ })
 
-  /* 3. Uso del método findAll */
-  let usersCollection = await models.users.findAll({ })
+       /* 4. Paso de parámetros a la vista */
+       res.render('crud', { title: 'CRUD of users', usersArray: usersCollection, rolesArray: rolesCollection   });
 
-  /* 4. Paso de parámetros a la vista */
-  res.render('crud', { title: 'CRUD with users', usersArray: usersCollection });
-
-});
+     });
 
 
 /* POST user. */
