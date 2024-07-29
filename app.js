@@ -61,6 +61,7 @@ module.exports = app;
 3 si 2 esta bien                      GET '/users' -> carga la pagina principal
 2                                     POST '/login' -> maneja control de acceso
                                       POST '/users' agrega un usuario
+                                      GET '/logout' -> cierra la sesion
 */
 
 /*
@@ -70,4 +71,7 @@ Navegador <---------------------------------------------------------------------
           ---------------------------------------------->
                     HTTP GET '/users'
                 cookie username=superadmin || tomas, puede ser otro, y se va a cambiar
+                cookie username=Session
+
+                app valida usuario y carga la sesion
 */
