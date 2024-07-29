@@ -8,10 +8,10 @@ function initModels(sequelize) {
   var users = _users(sequelize, DataTypes);
   var users_roles = _users_roles(sequelize, DataTypes);
 
-  users_roles.belongsTo(roles, { as: "roles_idrole_role", foreignKey: "roles_idrole"});
-  roles.hasMany(users_roles, { as: "users_roles", foreignKey: "roles_idrole"});
-  users_roles.belongsTo(users, { as: "users_iduser_user", foreignKey: "users_iduser"});
-  users.hasMany(users_roles, { as: "users_roles", foreignKey: "users_iduser"});
+  users_roles.belongsTo(roles, { as: "roles_idrole_role", foreignKey: "roles_idrole" });
+  roles.hasMany(users_roles, { as: "users_roles", foreignKey: "roles_idrole" });
+  users_roles.belongsTo(users, { as: "users_iduser_user", foreignKey: "users_iduser" });
+  users.hasMany(users_roles, { as: "users_roles", foreignKey: "users_iduser" });
 
   return {
     roles,

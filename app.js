@@ -1,5 +1,5 @@
- /* 1. Carga de variables de entorno */
- require('dotenv').config()
+/* 1. Carga de variables de entorno */
+require('dotenv').config()
 
 var createError = require('http-errors');
 var express = require('express');
@@ -9,7 +9,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var template_loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -28,12 +27,12 @@ app.use('/users', usersRouter);
 // no se usa app.use('/template_login', template_loginRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -44,3 +43,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+/*
+1 al inicio y 1 si el login esta mal  GET '/' -> carga la vista del login
+3 si 2 esta bien                      GET '/users' -> carga la pagina principal
+2                                     POST '/login' -> maneja control de acceso
+                                      POST '/users' agrega un usuario
+*/
