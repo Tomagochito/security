@@ -74,4 +74,14 @@ Navegador <---------------------------------------------------------------------
                 cookie username=Session
 
                 app valida usuario y carga la sesion
+
+
+
+
+    usedata(users) incluyya todos los modelos anindados internamente hay una referencia hacia otro objeto users.roles relacionada
+    con users_roles y dentro otro objeto aniadod entre relaicon con users_roles y roles, donde
+    por cada indoce que se tiene alli va a estar relacionado con otro objeto que ba a se de roles o rolesm cuando duce nestes
+    es traeme todas las relaicones a patir de userfata, pero quiere los objetos anidados, el userrolesidroles 
+    es un alias de clave foranea
+
 */
