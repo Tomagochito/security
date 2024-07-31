@@ -37,7 +37,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', authenticateSession, authorizationSession, usersRouter);
-// no se usa app.use('/template_login', template_loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -9,10 +9,17 @@ var models = initModels(sequelize);
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+//GET token page
+router.get('/ticket', function (req, res, next) {
+  res.render('ticket');
+});
+
+
+//GET home page. 
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
 
 /* POST user. */
 /* 3. Cree el callback asíncrono que responda al método POST */
